@@ -17,13 +17,13 @@ async function registerPlayer() {
   try {
     rec = await apiRegisterPlayer(name, phone);
   } catch (e) {
-    err.textContent = e.message || "Could not reach the server.";
+    err.textContent = "This number is already registered under a different name.";
     return;
   }
 
   err.textContent = "";
-  player = { name, phone };
-  paintHomeStats(name, rec);
+  player = { name: rec.name, phone };
+  paintHomeStats(rec.name, rec);
   goto('screen-home');
 }
 
