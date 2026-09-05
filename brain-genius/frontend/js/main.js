@@ -35,3 +35,7 @@ async function goHome() {
     paintHomeStats(player.name, rec);
   } catch (e) {}
 }
+function switchPlayer() {
+  player = null;
+  goto('screen-register');
+}
