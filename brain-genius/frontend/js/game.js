@@ -31,7 +31,7 @@ function difficultyLabel(d) {
   if (d === 2) return "Master";
   return "Genius";
 }
-}
+
 
 function nextRound() {
   if (session.round >= TOTAL_ROUNDS || session.lives <= 0) {
