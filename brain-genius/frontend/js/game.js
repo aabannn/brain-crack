@@ -21,11 +21,16 @@ function updateHud() {
     "\u2665".repeat(session.lives) + "\u2661".repeat(START_LIVES - session.lives);
 }
 
-function difficultyForRound(r) { return 1 + Math.floor(r / 2); } // r is 0-indexed
+function difficultyForRound(r) {
+  if (r < 10) return 1;   // rounds 1-10: Junior
+  if (r < 20) return 2;   // rounds 11-20: Master
+  return 3;               // rounds 21-30: Genius
+}
 function difficultyLabel(d) {
-  if (d <= 2) return "Junior";
-  if (d <= 4) return "Master";
+  if (d === 1) return "Junior";
+  if (d === 2) return "Master";
   return "Genius";
+}
 }
 
 function nextRound() {
@@ -37,9 +42,9 @@ function nextRound() {
   const gameType = GAME_ORDER[session.round % GAME_ORDER.length];
   const difficulty = difficultyForRound(session.round);
   document.getElementById('board-game-title').textContent = GAME_TITLES[gameType];
+  const tierRoundNum = (session.round % 10) + 1;
   document.getElementById('board-round-label').textContent =
-    difficultyLabel(difficulty) + " \u2014 Round " + (session.round + 1) + " / " + TOTAL_ROUNDS;
-  updateHud();
+    difficultyLabel(difficulty) + " \u2014 Round " + tierRoundNum + " / 10";
 
   const stage = document.getElementById('stage');
   const answerArea = document.getElementById('answer-area');
