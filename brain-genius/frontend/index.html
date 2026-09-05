@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Crack-head</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <div class="topbar">
+    <h1> CRACK-HEAD</h1>
+    <div class="sub">TRAIN &middot; COMPETE &middot; WIN</div>
+  </div>
+
+  <!-- REGISTER -->
+  <main class="screen active" id="screen-register">
+    <h2 class="headline">JOIN THE<br>CHALLENGE</h2>
+    <p class="lead">Enter your name and mobile number to start training your brain and climb the leaderboard.</p>
+    <label for="reg-name">Full name</label>
+    <input type="text" id="reg-name" placeholder="e.g. Amban Nair" maxlength="40">
+    <label for="reg-phone">Mobile number</label>
+    <input type="tel" id="reg-phone" placeholder="e.g. 9847012345" maxlength="15">
+    <div class="error-text" id="reg-error"></div>
+    <button class="btn" onclick="registerPlayer()">Continue</button>
+    <div class="footer-links">
+      <span onclick="goto('screen-admin-login')">Admin login</span>
+    </div>
+  </main>
+
+  <!-- HOME -->
+  <main class="screen" id="screen-home">
+    <h2 class="headline">READY,<br><span id="home-name">PLAYER</span>?</h2>
+    <div class="home-card">
+      <div class="name">Your best score: <span id="home-best">0</span></div>
+      <div class="meta" id="home-plays">0 plays so far</div>
+    </div>
+    <p class="lead">Five exercises. Ten rounds. Difficulty climbs as you go &mdash; Junior, Master, then Genius.</p>
+    <button class="btn" onclick="startGame()">Start Game</button>
+    <button class="btn secondary" onclick="renderLeaderboard(); goto('screen-leaderboard')">View Leaderboard</button>
+    <div class="footer-links">
+      <span onclick="switchPlayer()">Not you? Switch player</span>
+    </div>
+  </main>
+
+  <!-- GAME -->
+  <main class="screen" id="screen-game">
+    <div class="hud">
+      <div id="hud-score">Score: 0</div>
+      <div class="lives" id="hud-lives">&hearts;&hearts;&hearts;</div>
+    </div>
+    <div class="timerbar-track"><div class="timerbar-fill" id="timerbar"></div></div>
+    <div class="board">
+      <div class="title" id="board-game-title">GAME</div>
+      <div class="round-label" id="board-round-label">Junior &mdash; Round 1</div>
+    </div>
+    <div class="stage" id="stage"></div>
+    <div id="answer-area"></div>
+  </main>
+
+  <!-- GAME OVER -->
+  <main class="screen" id="screen-gameover">
+    <h2 class="headline">RUN<br>COMPLETE</h2>
+    <div class="home-card">
+      <div class="name">Final score: <span id="over-score">0</span></div>
+      <div class="meta" id="over-best-note"></div>
+    </div>
+    <button class="btn" onclick="startGame()">Play Again</button>
+    <button class="btn secondary" onclick="renderLeaderboard(); goto('screen-leaderboard')">View Leaderboard</button>
+    <button class="btn secondary" onclick="goto()">Home</button>
+  </main>
+
+  <!-- LEADERBOARD -->
+  <main class="screen" id="screen-leaderboard">
+    <h2 class="headline">LEADER&shy;BOARD</h2>
+    <div id="leaderboard-wrap">
+      <p class="lead">Loading...</p>
+    </div>
+    <button class="btn secondary" onclick="goto('screen-home')">Back</button>
+  </main>
+
+  <!-- ADMIN LOGIN -->
+  <main class="screen" id="screen-admin-login">
+    <h2 class="headline">ADMIN<br>LOGIN</h2>
+    <label for="admin-pass">Password</label>
+    <input type="password" id="admin-pass" placeholder="Password">
+    <div class="error-text" id="admin-error"></div>
+    <button class="btn" onclick="adminLogin()">Log in</button>
+    <button class="btn secondary" onclick="goto('screen-register')">Back</button>
+  </main>
+
+  <!-- ADMIN PANEL -->
+  <main class="screen" id="screen-admin-panel">
+    <h2 class="headline">ADMIN<br>PANEL</h2>
+    <p class="lead" id="admin-summary">Loading players...</p>
+    <div id="admin-table-wrap" style="overflow-x:auto;"></div>
+    <div class="small-note">Tap WINNER to mark/unmark a player as a contest winner. All data is shared and visible to anyone who opens this admin panel with the password.</div>
+    <button class="btn secondary" onclick="goto('screen-home')" style="margin-top:16px;">Back to game</button>
+  </main>
+</div>
+
+<div class="flash-overlay" id="flash-overlay"></div>
+
+<!-- Load order matters: supabase client first, then config, then api
+     (needs both), then renderers + feature modules (need api), then main -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/renderers.js"></script>
+<script src="js/game.js"></script>
+<script src="js/leaderboard.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
