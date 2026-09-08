@@ -90,10 +90,11 @@ function onRoundAnswer(correct) {
   if (session.locked) return;
   session.locked = true;
   clearInterval(session.timer);
-  const difficulty = difficultyForRound(session.round);
+  const inBonus = session.round >= TOTAL_ROUNDS;
+  const difficulty = inBonus ? 4 : difficultyForRound(session.round);
   if (correct) {
     session.score += 100 * difficulty;
-    flashMessage("CORRECT!", true);
+    flashMessage(inBonus ? "BONUS +" + (100 * difficulty) : "CORRECT!", true);
   } else {
     session.lives -= 1;
     flashMessage("MISSED IT", false);
