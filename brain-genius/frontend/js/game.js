@@ -38,6 +38,7 @@ function nextRound() {
 
   session.locked = false;
   const inBonus = session.round >= TOTAL_ROUNDS;
+  document.getElementById('app').classList.toggle('bonus-mode', inBonus);
   const gameType = GAME_ORDER[session.round % GAME_ORDER.length];
   const difficulty = inBonus ? 4 : difficultyForRound(session.round);
 
