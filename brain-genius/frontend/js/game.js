@@ -34,17 +34,23 @@ function difficultyLabel(d) {
 
 
 function nextRound() {
-  if (session.round >= TOTAL_ROUNDS || session.lives <= 0) {
-    endGame();
-    return;
-  }
+  if (session.lives <= 0) { endGame(); return; }
+
   session.locked = false;
+  const inBonus = session.round >= TOTAL_ROUNDS;
   const gameType = GAME_ORDER[session.round % GAME_ORDER.length];
-  const difficulty = difficultyForRound(session.round);
+  const difficulty = inBonus ? 4 : difficultyForRound(session.round);
+
   document.getElementById('board-game-title').textContent = GAME_TITLES[gameType];
-  const tierRoundNum = (session.round % 10) + 1;
-  document.getElementById('board-round-label').textContent =
-    difficultyLabel(difficulty) + " \u2014 Round " + tierRoundNum + " / 10";
+  if (inBonus) {
+    const bonusRoundNum = session.round - TOTAL_ROUNDS + 1;
+    document.getElementById('board-round-label').textContent = "BONUS ROUND " + bonusRoundNum;
+  } else {
+    const tierRoundNum = (session.round % 10) + 1;
+    document.getElementById('board-round-label').textContent =
+      difficultyLabel(difficulty) + " \u2014 Round " + tierRoundNum + " / 10";
+  }
+  updateHud();
 
   const stage = document.getElementById('stage');
   const answerArea = document.getElementById('answer-area');
