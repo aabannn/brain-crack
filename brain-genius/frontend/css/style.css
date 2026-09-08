@@ -9,6 +9,34 @@
     --navy-2:#16273b;
     --ink:#12201d;
     --line:rgba(244,241,230,0.25);
+    #app.bonus-mode{
+  background:radial-gradient(circle at 50% 0%, #3a2e0a, #1a1404 70%);
+}
+#app.bonus-mode .topbar{
+  background:linear-gradient(180deg,#f2b705,#b8890a);
+  border-bottom:4px solid #7a5c05;
+}
+#app.bonus-mode .topbar h1{
+  color:#1a1404;
+  text-shadow:2px 2px 0 rgba(255,255,255,0.25);
+}
+#app.bonus-mode .topbar .sub{
+  color:#1a1404;
+}
+#app.bonus-mode .board{
+  background:linear-gradient(135deg,#f2b705,#d99a05);
+  border-color:#7a5c05;
+}
+#app.bonus-mode .board .title,
+#app.bonus-mode .board .round-label{
+  color:#1a1404;
+}
+#app.bonus-mode .hud{
+  color:#f2b705;
+}
+#app.bonus-mode .timerbar-fill{
+  background:#f2b705;
+}
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;height:100%;}
