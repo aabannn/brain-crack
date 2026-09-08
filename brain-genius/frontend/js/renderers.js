@@ -221,7 +221,7 @@ RENDERERS.web = function(stage, answerArea, difficulty, cb){
 RENDERERS.shapes = function(stage, answerArea, difficulty, cb){
   stage.classList.add("sky");
   const pool = ["\u26BD","\u2708\uFE0F","\uD83D\uDCF1","\uD83C\uDF88","\uD83C\uDFB2","\uD83C\uDF4E","\uD83D\uDE97","\uD83C\uDFB5","\u2B50","\uD83D\uDD11","\uD83C\uDF1E","\uD83C\uDF89"];
-  const seqLen = difficulty === 1 ? 3 : difficulty === 2 ? 9 : 6;
+  const seqLen = difficulty === 1 ? 3 : difficulty === 2 ? 9 : difficulty === 3 ? 6 : 10;
   const seq = [];
   const shuffled = pool.slice().sort(()=>Math.random()-0.5);
   for(let i=0;i<seqLen;i++) seq.push(shuffled[i]);
