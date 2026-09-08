@@ -12,6 +12,23 @@
     #app.bonus-mode{
   background:radial-gradient(circle at 50% 0%, #3a2e0a, #1a1404 70%);
 }
+.ieee-callout{
+  background:var(--navy);
+  border:1px solid var(--gold);
+  border-radius:8px;
+  padding:10px 12px;
+  margin:14px 0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:16px;
+}
+.ieee-callout a{
+  margin-left:auto;
+  color:var(--gold);
+  font-weight:bold;
+  white-space:nowrap;
+}
 #app.bonus-mode .topbar{
   background:linear-gradient(180deg,#f2b705,#b8890a);
   border-bottom:4px solid #7a5c05;
