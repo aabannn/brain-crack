@@ -9,8 +9,11 @@
     --navy-2:#16273b;
     --ink:#12201d;
     --line:rgba(244,241,230,0.25);
+
     #app.bonus-mode{
   background:radial-gradient(circle at 50% 0%, #3a2e0a, #1a1404 70%);
+    }
+}
 }
 .ieee-callout{
   background:var(--navy);
