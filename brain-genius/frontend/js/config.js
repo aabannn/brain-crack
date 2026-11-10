@@ -30,6 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
   o.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#111;color:#fff;' +
     'display:flex;flex-direction:column;align-items:center;justify-content:center;' +
     'text-align:center;padding:24px;font-family:sans-serif';
-  o.innerHTML = '<h1>Under maintenance</h1><p>We\'ll be back soon. Thanks for your patience!</p>';
+  o.innerHTML = '<h1>Thank you for participating</h1><p>We\'ll be back soon.</p>';
   document.body.appendChild(o);
 });
